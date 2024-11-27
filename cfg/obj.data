@@ -1,0 +1,6 @@
+```plaintext
+classes = 2
+train = data/images/train.txt
+valid = data/images/test.txt
+names = data/coco.names
+backup = results/weights/
