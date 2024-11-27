@@ -1,0 +1,6 @@
+results/weights/
+results/logs/
+__pycache__/
+*.pyc
+*.pyo
+*.json

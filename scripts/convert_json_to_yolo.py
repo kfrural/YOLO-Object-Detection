@@ -2,6 +2,9 @@ import json
 import os
 
 def convert_labelme_to_yolo(json_dir, output_dir):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
     for json_file in os.listdir(json_dir):
         if not json_file.endswith('.json'):
             continue
@@ -23,7 +26,7 @@ def convert_labelme_to_yolo(json_dir, output_dir):
                     obj_width = (x_max - x_min) / width
                     obj_height = (y_max - y_min) / height
 
-                    out.write(f"{label} {x_center} {y_center} {obj_width} {obj_height}\n")
+                    out.write(f"0 {x_center} {y_center} {obj_width} {obj_height}\n")
 
 if __name__ == "__main__":
     convert_labelme_to_yolo('data/labels/json/', 'data/labels/train/')
