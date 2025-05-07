@@ -1,0 +1,1 @@
+find data/images/ -type f | shuf | tail -n $(($(wc -l < data/images.txt) * 2/10)) > data/test.txt

@@ -1,5 +1,5 @@
 ```plaintext
-classes = 2
+classes = 80
 train = data/images/train.txt
 valid = data/images/test.txt
 names = data/coco.names

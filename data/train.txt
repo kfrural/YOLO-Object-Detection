@@ -1,0 +1,1 @@
+find data/images/ -type f | shuf | head -n $(($(wc -l < data/images.txt) * 8/10)) > data/train.txt
