@@ -1,81 +1,82 @@
-# YOLO-Object-Detection
+# YOLO Object Detection
 
-Este projeto implementa um sistema de detecção de objetos usando a arquitetura YOLO (You Only Look Once), permitindo a detecção em tempo real de objetos em imagens e vídeos.
+This project implements an object detection system using the YOLO (You Only Look Once) architecture, enabling real-time object detection in images and videos.
 
-## Visão Geral do Projeto
+## Project Overview
 
-O projeto utiliza o framework Darknet para implementar a detecção de objetos YOLO, com suporte opcional a GPU através do CUDA para melhor performance. O sistema inclui ferramentas para rotulação de dados, treinamento do modelo e inferência.
+The project utilizes the Darknet framework to implement YOLO object detection, with optional GPU support via CUDA for enhanced performance. The system includes tools for data labeling, model training, and inference.
 
-## Componentes do Sistema
+## System Components
 
-O sistema possui quatro componentes principais:
+The system consists of four main components:
 
-1. **Preparação dos Dados**
-   - Rotulação inicial das imagens usando LabelMe
-   - Conversão dos arquivos JSON para formato YOLO
-   - Organização dos dados em diretórios específicos
+**Data Preparation**- Initial image labeling using LabelMe
+- Conversion of JSON files to YOLO format
+- Organization of data in specific directories
 
-2. **Configurações do Projeto**
-   - Arquivos de configuração para treinamento
-   - Modelo base YOLOv4 para transferência de aprendizado
+**Project Configuration**- Training configuration files
+- YOLOv4 base model for transfer learning
 
-3. **Treinamento do Modelo**
-   - Uso do framework Darknet para o processo de treinamento
-   - Integração com CUDA para aceleração em GPU (opcional)
+**Model Training**- Darknet framework training process
+- CUDA integration for GPU acceleration (optional)
 
-4. **Detecção de Objetos**
-   - Utilização do modelo treinado para detecção em novas imagens
+**Object Detection**- Utilization of trained model for detecting objects in new images
 
+## Prerequisites
 
-## Pré-requisitos
-
-* Darknet (framework principal)
-* CUDA (opcional, para GPUs NVIDIA)
-* Python com dependências:
+- Darknet (main framework)
+- CUDA (optional, for NVIDIA GPUs)
+- Python dependencies:
 ```bash
 pip install numpy opencv-python
 ```
 
-## Instalação
 
-1. Clonar o repositório:
+
+## Installation
+
+Clone the repository:
+
 ```bash
-git clone https://github.com/seu-usuario/YOLO-Object-Detection.git
+git clone https://github.com/kfrural/YOLO-Object-Detection.git
 ```
-2. Instalar dependências Python:
+
+Install Python dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Uso
+## Usage
 
-### Rotulação de Dados
+### Data Labeling
 
-1. Abra o LabelMe e rotule suas imagens
-2. Execute o script de conversão:
+Open LabelMe and label your imagesRun the conversion script:
+
 ```bash
-python script/convert_json_to_yolo.py --dir caminho_das_imagens
+python script/convert_json_to_yolo.py --dir path_to_images
 ```
 
-### Treinamento
+### Training
 
-1. Configure os arquivos em `cfg/`:
-   - `obj.data`: configurações do dataset
-   - `yolo-obj.cfg`: parâmetros da rede
-2. Execute o treinamento:
+Configure files in `cfg/`:- `obj.data`: dataset configurations
+- `yolo-obj.cfg`: network parameters
+
+Execute training:
+
 ```bash
 ./darknet detector train cfg/obj.data cfg/yolo-obj.cfg yolov4.conv.137 -dont_show -map
 ```
 
-### Detecção
+### Detection
 
-Para realizar detecção em uma imagem:
+To perform detection on an image:
+
 ```bash
-./darknet detector test cfg/obj.data cfg/yolo-obj.cfg backup/yolov4-custom_last.weights -thresh 0.25 caminho_imagem.jpg
+./darknet detector test cfg/obj.data cfg/yolo-obj.cfg backup/yolov4-custom_last.weights -thresh 0.25 image_path.jpg
 ```
 
-## Detalhes Técnicos
+## Technical Details
 
-* O modelo utiliza YOLOv4 como base, que alcança 55.8% AP no conjunto de dados COCO test-dev
-* Com CUDA habilitado, o treinamento é significativamente acelerado
-* O sistema suporta detecção em tempo real com performance otimizada
+- The model utilizes YOLOv4 as base architecture, achieving 55.8% AP on COCO test-dev dataset
+- CUDA-enabled training significantly accelerates processing
+- The system supports real-time detection with optimized performance
